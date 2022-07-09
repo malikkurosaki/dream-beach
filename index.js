@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3002;
 const { tsv2json } = require('tsv-json')
 const path = require('path');
 const Generate = require('./controllers');
+const https = require('https');
 
 const dir = multer.diskStorage({
     // file name
@@ -37,9 +38,15 @@ app.post('/generate', expressAsyncHandler(async (req, res) => {
     res.json("hasil");
 }));
 
-app.listen(PORT, () => {
+https.createServer(app).listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 }
 );
+
+
+// app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+// }
+// );
 
 
