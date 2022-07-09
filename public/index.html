@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Beach</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+</head>
+
+<body class="container">
+    <h1>Dream Beach Report Generator</h1>
+    <input type="file" id="file" placeholder="upload file" accept=".csv">
+    <div id="hasil"></div>
+
+    <!-- <textarea style="height: 300px" id="data" rows="50" cols="50"></textarea>
+    <button id="button">Generate Report</button> -->
+
+    <script>
+
+        // $("#button").on("click", async () => {
+        //     let target = $("#data").val();
+        //     let datanya = await $.post("/generate", target);
+
+        //     console.log(datanya);
+        // })
+
+
+       // upload file with ajax express js
+        var file = document.getElementById('file');
+        file.addEventListener('change', function (e) {
+            var formData = new FormData();
+            formData.append('file', file.files[0]);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/upload');
+            xhr.send(formData);
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    $("#hasil").html(xhr.responseText);
+                } else {
+                    alert('An error occurred!');
+                }
+            };
+        });
+
+    </script>
+</body>
+
+</html>
