@@ -40,8 +40,8 @@ app.post('/generate', expressAsyncHandler(async (req, res) => {
 }));
 
 https.createServer({
-    key: fs.readFileSync("/etc/letsencrypt/live/makurostudio.my.id/privkey.pem"),
-    cert: fs.readFileSync("/etc/letsencrypt/live/makurostudio.my.id/fullchain.pem"),
+    key: fs.readFileSync("key.pem"),
+    cert: fs.readFileSync("cert.pem"),
 }, app).listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 }
